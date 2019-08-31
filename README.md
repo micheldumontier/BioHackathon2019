@@ -20,14 +20,14 @@ Hardware:
 
 ## Install the infrastructure locally ##
 ### 1. Prepare datasets for multiple parties ###
-1. In terminal, go to **DataPrepare** folder and run ```docker build -t splitdata . ``` (You can run ```docker images``` to check if "splitdata" image is in the list)
-2. Edit **input.json** file. Input how many data parties you have and which data file you use. (Details about data are described in the README.md file in "DataPrepare" folder)
-3. In terminal
+1. Using a terminal, enter the **DataPrepare** folder and run ```docker build -t splitdata . ``` (You can run ```docker images``` to check if "splitdata" image is in the list)
+2. Edit **input.json**. Specify the number of data parties and the data file to use. (Details about data are described in the README.md file in "DataPrepare" folder)
+3. Using the terminal
     - MAC users: run ```docker run --rm -v $(pwd)/output:/output splitdata```
     - Windows users: run ```docker run --rm -v %cd%/output:/output splitdata```
-4. You will see splited datasets files in a new generated **output"** folder. Put splited datasets into data parties foler (e.g., "Party_1_Container", "Party_2_Container") 
-5. If you need more data parties, 
-    - copy paste one existing "Party_X_Container" and rename it
+4. The split data files will be in a new generated **output** folder. Move each data file to their respective data party folder  **containers/createContainer/Party_X_Container** ) 
+5. If you need more data party folders, 
+    - duplicate an existing "Party_X_Container" and rename it
     - Change name of the data file in **Dockerfile** ```COPY data_party_X.csv data_party_X.csv```
 
 ### 2. Setup stations at data parties ###
